@@ -27,6 +27,7 @@ export interface Item {
     defaultZIndex: number;
     zIndexOverride?: number;
     isRemovable?: boolean;
+    isDefault?: boolean;
     variants?: Record<string, string>;
 }
 

@@ -108,8 +108,12 @@ function loadCharacter(char: CharacterConfig) {
   currentCharacter = char;
   outfit.clear();
 
-  const defaultHair = char.items.find(i => i.slot === 'hair');
-  if (defaultHair) outfit.toggleItem(defaultHair);
+  // Надеваем всё, что помечено как дефолтное для этого персонажа
+char.items.forEach(item => {
+  if (item.isDefault) {
+    outfit.toggleItem(item);
+  }
+});
 
   const bodyImg = document.getElementById('body-layer') as HTMLImageElement;
   if (bodyImg) bodyImg.src = char.bodySrc;
