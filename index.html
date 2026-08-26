@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="/src/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Char Dresser</title>
+  </head>
+
+  <body>
+    <div id="app" class="app-container">
+
+      <!-- Игровой холст -->
+      <main class="stage-wrapper">
+        <div id="stage" class="stage">
+          <!-- Кнопка выбора персонажа поверху холста -->
+          <button id="char-btn" class="btn-char">👤 Character</button>
+
+          <!-- Фон -->
+          <div id="bg-layer" class="layer bg-layer"></div>
+          <!-- Модель (без битого src) -->
+          <img id="body-layer" class="layer" src="" alt="Body" />
+          <!-- Одежда -->
+          <div id="clothes-container"></div>
+        </div>
+      </main>
+
+      <!-- Панель управления -->
+      <section class="ui-panel">
+        <nav class="tabs-main">
+          <button class="tab-btn" data-tab="hair">Hair</button>
+          <button class="tab-btn active" data-tab="clothes">Clothes</button>
+          <button class="tab-btn" data-tab="details">Details</button>
+          <button class="tab-btn" data-tab="background">Background</button>
+          <button id="save-btn" class="btn-save">Save</button>
+        </nav>
+
+        <div id="subtabs" class="tabs-sub"></div>
+        <div id="item-grid" class="item-grid"></div>
+      </section>
+
+    </div>
+
+    <!-- Модалка переключения -->
+    <div id="char-modal-overlay" class="modal-overlay hidden">
+      <div class="modal-window">
+        <h3>Choose character</h3>
+        <div id="char-list" class="char-list"></div>
+      </div>
+    </div>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
