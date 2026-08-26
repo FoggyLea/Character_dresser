@@ -5,7 +5,7 @@ export const BillWeasley: CharacterConfig = {
     name: 'Bill Weasley',
     author: 'leafoggy',
     canvasSize: { width: 1400, height: 1950 },
-    bodySrc: '/assets/characters/bill/base/body.PNG',
+    bodySrc: 'assets/characters/bill/base/body.PNG',
     items: [
         {
             id: 'ponytail',
