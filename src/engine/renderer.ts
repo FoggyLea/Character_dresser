@@ -1,6 +1,6 @@
 import type { CharacterConfig, Item } from '../types';
 
-export function renderStage(character: CharacterConfig, equippedItems: Item[]): void {
+export function renderStage(_character: CharacterConfig, equippedItems: Item[]): void {
 const container = document.getElementById('clothes-container');
   const bgLayer = document.getElementById('bg-layer');
 

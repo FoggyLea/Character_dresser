@@ -1,4 +1,4 @@
-import type { TabCategory, Subcategory, CharacterConfig, Item } from './types';
+import type { TabCategory, Subcategory, CharacterConfig } from './types';
 import { SUB_CATEGORIES_MAP } from './types';
 import { CHARACTERS } from './config/characters';
 import { OutfitManager } from './engine/state';
