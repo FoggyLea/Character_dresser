@@ -4,7 +4,7 @@ export const BillWeasley: CharacterConfig = {
     id: 'billweasley',
     name: 'Bill Weasley',
     author: 'leafoggy',
-    canvasSize: { width: 1400, height: 1950 },
+    canvasSize: { width: 1450, height: 1950 },
     bodySrc: 'assets/characters/bill/base/body.PNG',
     items: [
         {
@@ -14,7 +14,7 @@ export const BillWeasley: CharacterConfig = {
             subcategory: 'hair',
             slot: 'hair',
             src: 'assets/characters/bill/hair/ponytail.PNG',
-            defaultZIndex: 15,
+            defaultZIndex: 17,
             isRemovable: false,
             isDefault: true
         },
@@ -25,7 +25,7 @@ export const BillWeasley: CharacterConfig = {
             subcategory: 'bottom',
             slot: 'bottom',
             src: 'assets/characters/bill/clothes/bottoms/baggy_jeans.PNG',
-            defaultZIndex: 50,
+            defaultZIndex: 55,
             isRemovable: true,
             isDefault: true
         },
@@ -36,7 +36,17 @@ export const BillWeasley: CharacterConfig = {
             subcategory: 'outerwear',
             slot: 'outerwear',
             src: 'assets/characters/bill/clothes/outerwear/denim_vest.PNG',
-            defaultZIndex: 70,
+            defaultZIndex: 75,
+            isRemovable: true
+        },
+        {
+            id: 'jacket',
+            name: 'Leather jacket',
+            tab: 'clothes',
+            subcategory: 'outerwear',
+            slot: 'outerwear',
+            src: 'assets/characters/bill/clothes/outerwear/leather_jacket.PNG',
+            defaultZIndex: 75,
             isRemovable: true
         },
         {
@@ -46,7 +56,7 @@ export const BillWeasley: CharacterConfig = {
             subcategory: 'shoes',
             slot: 'shoes',
             src: 'assets/characters/bill/clothes/shoes/boots.PNG',
-            defaultZIndex: 40,
+            defaultZIndex: 45,
             isRemovable: true,
             isDefault: true
         },
@@ -57,7 +67,7 @@ export const BillWeasley: CharacterConfig = {
             subcategory: 'top',
             slot: 'top_inner',
             src: 'assets/characters/bill/clothes/tops/mesh_sweater.PNG',
-            defaultZIndex: 20,
+            defaultZIndex: 25,
             isRemovable: true
         },
         {
@@ -67,9 +77,49 @@ export const BillWeasley: CharacterConfig = {
             subcategory: 'top',
             slot: 'top_mid',
             src: 'assets/characters/bill/clothes/tops/red_top.PNG',
-            defaultZIndex: 60,
+            defaultZIndex: 65,
             isRemovable: true,
             isDefault: true
+        },
+        {
+            id: 'earring1',
+            name: 'Fang earring',
+            tab: 'details',
+            subcategory: 'acc',
+            slot: 'acc',
+            src: 'assets/characters/bill/details/acc/fang.PNG',
+            defaultZIndex: 20,
+            isRemovable: true
+        },
+        {
+            id: 'earring2',
+            name: 'Chain earring',
+            tab: 'details',
+            subcategory: 'acc',
+            slot: 'acc',
+            src: 'assets/characters/bill/details/acc/chain.PNG',
+            defaultZIndex: 15,
+            isRemovable: true
+        },
+        {
+            id: 'earring3',
+            name: 'Pair earrings',
+            tab: 'details',
+            subcategory: 'acc',
+            slot: 'acc',
+            src: 'assets/characters/bill/details/acc/rings.PNG',
+            defaultZIndex: 20,
+            isRemovable: true
+        },
+        {
+            id: 'nails1',
+            name: 'Black nails',
+            tab: 'details',
+            subcategory: 'skin',
+            slot: 'skin',
+            src: 'assets/characters/bill/details/acc/nails.PNG',
+            defaultZIndex: 15,
+            isRemovable: true
         },
         {
             id: 'scars',
@@ -78,7 +128,18 @@ export const BillWeasley: CharacterConfig = {
             subcategory: 'skin',
             slot: 'skin',
             src: 'assets/characters/bill/details/skin/scars.PNG',
-            defaultZIndex: 10,
+            defaultZIndex: 13,
+            isRemovable: true,
+            isDefault: true
+        },
+        {
+            id: 'bags',
+            name: 'Some sleep',
+            tab: 'details',
+            subcategory: 'skin',
+            slot: 'skin',
+            src: 'assets/characters/bill/details/skin/sleep.PNG',
+            defaultZIndex: 11,
             isRemovable: true,
             isDefault: true
         },

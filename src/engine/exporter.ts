@@ -2,7 +2,7 @@ import type { CharacterConfig, Item } from '../types';
 
 export async function downloadOutfit(character: CharacterConfig, equippedItems: Item[]): Promise<void> {
   const canvas = document.createElement('canvas');
-  canvas.width = character.canvasSize.width;   // 1400
+  canvas.width = character.canvasSize.width;   // 1450
   canvas.height = character.canvasSize.height; // 1950
   const ctx = canvas.getContext('2d');
 
