@@ -14,6 +14,7 @@ export const BillWeasley: CharacterConfig = {
             subcategory: 'hair',
             slot: 'hair',
             src: 'assets/characters/bill/hair/ponytail.PNG',
+            icon: 'assets/characters/bill/icons/ponytail.png',
             defaultZIndex: 17,
             isRemovable: false,
             isDefault: true
@@ -25,6 +26,7 @@ export const BillWeasley: CharacterConfig = {
             subcategory: 'bottom',
             slot: 'bottom',
             src: 'assets/characters/bill/clothes/bottoms/baggy_jeans.PNG',
+            icon: 'assets/characters/bill/icons/baggy_jeans.png',
             defaultZIndex: 55,
             isRemovable: true,
             isDefault: true
@@ -36,6 +38,7 @@ export const BillWeasley: CharacterConfig = {
             subcategory: 'outerwear',
             slot: 'outerwear',
             src: 'assets/characters/bill/clothes/outerwear/denim_vest.PNG',
+            icon: 'assets/characters/bill/icons/denim_vest.png',
             defaultZIndex: 75,
             isRemovable: true
         },
@@ -46,6 +49,7 @@ export const BillWeasley: CharacterConfig = {
             subcategory: 'outerwear',
             slot: 'outerwear',
             src: 'assets/characters/bill/clothes/outerwear/leather_jacket.PNG',
+            icon: 'assets/characters/bill/icons/leather_jacket.png',
             defaultZIndex: 75,
             isRemovable: true
         },
@@ -56,6 +60,7 @@ export const BillWeasley: CharacterConfig = {
             subcategory: 'shoes',
             slot: 'shoes',
             src: 'assets/characters/bill/clothes/shoes/boots.PNG',
+            icon: 'assets/characters/bill/icons/boots.png',
             defaultZIndex: 45,
             isRemovable: true,
             isDefault: true
@@ -67,6 +72,7 @@ export const BillWeasley: CharacterConfig = {
             subcategory: 'top',
             slot: 'top_inner',
             src: 'assets/characters/bill/clothes/tops/mesh_sweater.PNG',
+            icon: 'assets/characters/bill/icons/mesh.png',
             defaultZIndex: 25,
             isRemovable: true
         },
@@ -77,6 +83,7 @@ export const BillWeasley: CharacterConfig = {
             subcategory: 'top',
             slot: 'top_mid',
             src: 'assets/characters/bill/clothes/tops/red_top.PNG',
+            icon: 'assets/characters/bill/icons/red_top.png',
             defaultZIndex: 65,
             isRemovable: true,
             isDefault: true
@@ -88,6 +95,7 @@ export const BillWeasley: CharacterConfig = {
             subcategory: 'acc',
             slot: 'acc',
             src: 'assets/characters/bill/details/acc/fang.PNG',
+            icon: 'assets/characters/bill/icons/ear_fang.png',
             defaultZIndex: 20,
             isRemovable: true
         },
@@ -98,6 +106,7 @@ export const BillWeasley: CharacterConfig = {
             subcategory: 'acc',
             slot: 'acc',
             src: 'assets/characters/bill/details/acc/chain.PNG',
+            icon: 'assets/characters/bill/icons/ear_chain.png',
             defaultZIndex: 15,
             isRemovable: true
         },
@@ -107,7 +116,8 @@ export const BillWeasley: CharacterConfig = {
             tab: 'details',
             subcategory: 'acc',
             slot: 'acc',
-            src: 'assets/characters/bill/details/acc/rings.PNG',
+            src: 'assets/characters/bill/details/acc/ear_rings.PNG',
+            icon: 'assets/characters/bill/icons/ear_pair.png',
             defaultZIndex: 20,
             isRemovable: true
         },
@@ -118,6 +128,7 @@ export const BillWeasley: CharacterConfig = {
             subcategory: 'skin',
             slot: 'skin',
             src: 'assets/characters/bill/details/acc/nails.PNG',
+            icon: 'assets/characters/bill/icons/nails.png',
             defaultZIndex: 15,
             isRemovable: true
         },
@@ -128,6 +139,7 @@ export const BillWeasley: CharacterConfig = {
             subcategory: 'skin',
             slot: 'skin',
             src: 'assets/characters/bill/details/skin/scars.PNG',
+            icon: 'assets/characters/bill/icons/scars.png',
             defaultZIndex: 13,
             isRemovable: true,
             isDefault: true
@@ -139,6 +151,7 @@ export const BillWeasley: CharacterConfig = {
             subcategory: 'skin',
             slot: 'skin',
             src: 'assets/characters/bill/details/skin/sleep.PNG',
+            icon: 'assets/characters/bill/icons/sleep.png',
             defaultZIndex: 11,
             isRemovable: true,
             isDefault: true

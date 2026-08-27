@@ -91,7 +91,20 @@ function renderGrid() {
     const isEquipped = outfit.isEquipped(item.id);
 
     card.className = `item-card ${isEquipped ? 'active' : ''}`;
-    card.innerText = item.name;
+
+    // 1. Иконка (если есть)
+    if (item.icon) {
+      const img = document.createElement('img');
+      img.src = item.icon;
+      img.alt = item.name;
+      card.appendChild(img);
+    }
+
+    // 2. Подпись (ровно одна штука снизу)
+    const label = document.createElement('span');
+    label.className = 'item-label';
+    label.innerText = item.name;
+    card.appendChild(label);
 
     card.addEventListener('click', () => {
       outfit.toggleItem(item);
