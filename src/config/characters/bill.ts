@@ -20,6 +20,17 @@ export const BillWeasley: CharacterConfig = {
             isDefault: true
         },
         {
+            id: 'bun',
+            name: 'Bun',
+            tab: 'hair',
+            subcategory: 'hair',
+            slot: 'hair',
+            src: 'assets/characters/bill/hair/bun.PNG',
+            icon: 'assets/characters/bill/icons/bun.png',
+            defaultZIndex: 17,
+            isRemovable: false
+        },
+        {
             id: 'jeans1',
             name: 'Baggy jeans',
             tab: 'clothes',
