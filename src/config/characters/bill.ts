@@ -88,6 +88,17 @@ export const BillWeasley: CharacterConfig = {
             isDefault: true
         },
         {
+            id: 'sneakers',
+            name: 'Sneakers',
+            tab: 'clothes',
+            subcategory: 'shoes',
+            slot: 'shoes',
+            src: 'assets/characters/bill/clothes/shoes/sneakers.PNG',
+            icon: 'assets/characters/bill/icons/sneakers.png',
+            defaultZIndex: 50,
+            isRemovable: true
+        },
+        {
             id: 'mesh',
             name: 'Mesh sweater',
             tab: 'clothes',
