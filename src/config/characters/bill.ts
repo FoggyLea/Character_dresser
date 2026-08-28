@@ -110,7 +110,18 @@ export const BillWeasley: CharacterConfig = {
             isRemovable: true
         },
         {
-            id: 'top1',
+            id: 'crop',
+            name: 'Crop top',
+            tab: 'clothes',
+            subcategory: 'top',
+            slot: 'top_inner',
+            src: 'assets/characters/bill/clothes/tops/crop_top.PNG',
+            icon: 'assets/characters/bill/icons/crop_top.png',
+            defaultZIndex: 25,
+            isRemovable: true
+        },
+        {
+            id: 'red_top',
             name: 'Red top',
             tab: 'clothes',
             subcategory: 'top',
@@ -120,6 +131,19 @@ export const BillWeasley: CharacterConfig = {
             defaultZIndex: 65,
             isRemovable: true,
             isDefault: true
+        },
+        { id: 't_shirt',
+            name: 'T-shirt',
+            tab: 'clothes',
+            subcategory: 'top',
+            slot: 'top_mid',
+            src: 'assets/characters/bill/clothes/tops/tshirt.PNG',
+            icon: 'assets/characters/bill/icons/tshirt.png',
+            defaultZIndex: 65,
+            isRemovable: true,
+            variants: {
+                jacket: 'assets/characters/bill/clothes/tops/tshirt_jacket.PNG'
+            }
         },
         {
             id: 'earring1',

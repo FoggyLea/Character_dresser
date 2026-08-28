@@ -155,6 +155,43 @@ body {
   border-color: var(--accent);
 }
 
+/* Виды топов */
+
+.tabs-sub.nested {
+  gap: 4px;
+  margin-top: -4px;
+}
+
+.nested-btn {
+  padding: 4px 8px;
+  font-size: 12px;
+  background: #27272a;
+  opacity: 0.8;
+}
+
+/* Стандартная фиолетовая подсветка для обычных фильтров */
+.nested-btn.active {
+  background: #5b4bc4;
+  opacity: 1;
+}
+
+/* Зеленая подсветка для All */
+.nested-btn[data-id="all"] {
+  background: #217649;
+  color: #d1d1d6;
+  opacity: 0.85;
+}
+
+.nested-btn[data-id="all"].active {
+  background: #27ae60;
+  color: #fff;
+  opacity: 1;
+}
+
+.nested-btn[data-id="all"].active:hover {
+  background: #2ecc71;
+}
+
 /* Мобильная адаптация */
 @media (max-width: 768px) {
   body {

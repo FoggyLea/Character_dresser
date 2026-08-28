@@ -1,4 +1,4 @@
-import type { TabCategory, Subcategory, CharacterConfig } from './types';
+import type { TabCategory, Subcategory, CharacterConfig, LayerSlot, SubCategoryConfig } from './types';
 import { SUB_CATEGORIES_MAP } from './types';
 import { CHARACTERS } from './config/characters';
 import { OutfitManager } from './engine/state';
@@ -12,6 +12,7 @@ const outfit = new OutfitManager();
 let currentCharacter: CharacterConfig = CHARACTERS[0];
 let currentTab: TabCategory = 'hair';
 let currentSubcategory: Subcategory = 'hair';
+let currentNestedFilter: LayerSlot | null = null;
 
 // Элементы DOM
 const tabButtons = document.querySelectorAll<HTMLButtonElement>('.tabs-main .tab-btn');
@@ -21,6 +22,7 @@ const charBtn = document.getElementById('char-btn')!;
 const charModal = document.getElementById('char-modal-overlay')!;
 const charList = document.getElementById('char-list')!;
 const saveBtn = document.getElementById('save-btn')!;
+const nestedSubtabsContainer = document.getElementById('nested-subtabs')!;
 
 // Функция синхронизации активности главных вкладок
 function updateMainTabsUI() {
@@ -47,6 +49,7 @@ tabButtons.forEach(btn => {
 // 2. Отрисовка подкатегорий (скрываем панель, если подкатегория одна или их нет)
 function renderSubtabs(tab: TabCategory) {
   subtabsContainer.innerHTML = '';
+  nestedSubtabsContainer.innerHTML = '';
   const subcats = SUB_CATEGORIES_MAP[tab] || [];
 
   // Если у категории 0 или 1 подкатегория (как у Hair или Background), прячем полосу
@@ -57,7 +60,6 @@ function renderSubtabs(tab: TabCategory) {
     }
     return;
   }
-
   // Показываем подвкладки, если их больше одной (как у Clothes)
   subtabsContainer.style.display = 'flex';
   currentSubcategory = subcats[0].id;
@@ -71,10 +73,41 @@ function renderSubtabs(tab: TabCategory) {
       document.querySelectorAll('#subtabs .tab-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       currentSubcategory = sub.id;
+      renderNestedSubtabs(sub);
       renderGrid();
     });
 
     subtabsContainer.appendChild(btn);
+  });
+  renderNestedSubtabs(subcats[0]);
+}
+
+// Отрисовка вложенных подвкладок (Clothes -> Top -> Undertop/Top)
+function renderNestedSubtabs(subcat: SubCategoryConfig) {
+  nestedSubtabsContainer.innerHTML = '';
+  currentNestedFilter = null;
+
+  if (!subcat.subTabs || subcat.subTabs.length === 0) {
+    nestedSubtabsContainer.style.display = 'none';
+    return;
+  }
+
+  nestedSubtabsContainer.style.display = 'flex';
+
+  subcat.subTabs.forEach((nested, index) => {
+    const btn = document.createElement('button');
+    btn.className = `tab-btn nested-btn ${index === 0 ? 'active' : ''}`;
+    btn.dataset.id = nested.id;
+    btn.innerText = nested.label;
+
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('#nested-subtabs .tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentNestedFilter = nested.slotFilter || null;
+      renderGrid();
+    });
+
+    nestedSubtabsContainer.appendChild(btn);
   });
 }
 
@@ -82,9 +115,16 @@ function renderSubtabs(tab: TabCategory) {
 function renderGrid() {
   grid.innerHTML = '';
 
-  const filteredItems = currentCharacter.items.filter(
-    item => item.tab === currentTab && item.subcategory === currentSubcategory
-  );
+ const filteredItems = currentCharacter.items.filter(item => {
+    const matchCategory = item.tab === currentTab && item.subcategory === currentSubcategory;
+    if (!matchCategory) return false;
+
+    // Если активен фильтр 2-го уровня — дополнительно проверяем slot предмета
+    if (currentNestedFilter) {
+      return item.slot === currentNestedFilter;
+    }
+    return true;
+  });
 
   filteredItems.forEach(item => {
     const card = document.createElement('div');

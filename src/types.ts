@@ -1,4 +1,5 @@
 export type TabCategory = 'hair' | 'clothes' | 'details' | 'background';
+
 export type Subcategory =
 | 'top' |'outerwear'
 | 'bottom' | 'shoes'
@@ -15,6 +16,18 @@ export type LayerSlot =
   | 'skin'     // Макияж/шрамы
   | 'acc'        // Аксессуары
   | 'bg';        // Фон
+
+  export interface SubSubCategory {
+  id: string; // Например: 'all', 'top_mid', 'top_inner'
+  label: string;
+  slotFilter?: LayerSlot;
+}
+
+export interface SubCategoryConfig {
+  id: Subcategory;
+  label: string;
+  subTabs?: SubSubCategory[];
+}
 
 export interface Item {
     id: string;
@@ -40,22 +53,28 @@ export interface CharacterConfig {
     items: Item[];
 }
 
-export const SUB_CATEGORIES_MAP: Record<TabCategory, { id: Subcategory; label: string }[]> = {
+export const SUB_CATEGORIES_MAP: Record<TabCategory, SubCategoryConfig[]> = {
     clothes: [
-        {id: 'top', label: 'Top'},
-        {id: 'bottom', label: 'Bottom'},
-        {id: 'shoes', label: 'Shoes'},
-        {id: 'outerwear', label: 'Outerwear'}
+        {
+            id: 'top',
+            label: 'Top',
+            subTabs: [
+                { id: 'all', label: 'All' },
+                { id: 'top_mid', label: 'Tops', slotFilter: 'top_mid' },
+                { id: 'top_inner', label: 'Undertops', slotFilter: 'top_inner' }
+            ]
+        },
+        { id: 'bottom', label: 'Bottom' },
+        { id: 'shoes', label: 'Shoes' },
+        { id: 'outerwear', label: 'Outerwear' }
     ],
-    hair: [
-        {id: 'hair', label: 'Hair'}
-    ],
+    hair: [{ id: 'hair', label: 'Hair' }],
     details: [
-        {id: 'acc', label: 'Accessoires'},
-        {id: 'skin', label: 'Skin'}
+        { id: 'acc', label: 'Accessoires' },
+        { id: 'skin', label: 'Skin' }
     ],
     background: [
-        {id: 'bg_colour', label: 'Colour'},
-        {id: 'bg_image', label: 'Image'}
+        { id: 'bg_colour', label: 'Colour' },
+        { id: 'bg_image', label: 'Image' }
     ]
 };
