@@ -208,8 +208,8 @@ body {
 
   /* Верхняя панель с персонажем заблокирована */
   .stage-wrapper {
-    flex: 0 0 60vh; /* 65% высоты строго под сцену */
-    height: 60vh;
+    flex: 0 0 55vh;
+    height: 55vh;
     width: 100%;
     overflow: hidden;
   }
