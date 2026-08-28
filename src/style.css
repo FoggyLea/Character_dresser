@@ -218,7 +218,8 @@ body {
   .ui-panel {
     width: 100%;
     flex: 1;
-    height: calc(35vh - 24px);
+   /* height: calc(35vh - 24px);*/
+    min-height: 0; /* Разрешаем панели сжиматься */
     overflow: hidden;
     padding: 8px;
     gap: 8px;
@@ -226,13 +227,31 @@ body {
 
   /* Уменьшенные иконки на мобилках (4 в ряд) */
   .item-grid {
-    grid-template-columns: repeat(4, 1fr);
-    gap: 6px;
-    font-size: 12px;
+    flex: 1;
+    min-height: 0; /* КЛЮЧЕВОЕ: заставляет flex-элемент включить внутренний скролл */
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch; /* Плавный скролл на iOS */
+    touch-action: pan-y; /* Разрешает вертикальный свайп пальцем */
+
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    padding-bottom: 16px;
   }
 
   .item-card {
     padding: 4px;
+  }
+
+  .item-card img {
+    max-height: 80%; /* Ограничиваем высоту картинки, оставляя место под текст */
+  }
+
+  .item-label {
+    font-size: 10px;
+    line-height: 1.2;
+    white-space: normal; /* Разрешаем перенос текста на 2 строки, если не влезает */
+    word-break: break-word;
+    margin-top: 2px;
   }
 
   .tab-btn {
