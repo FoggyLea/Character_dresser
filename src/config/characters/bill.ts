@@ -43,6 +43,17 @@ export const BillWeasley: CharacterConfig = {
             isDefault: true
         },
         {
+            id: 'trousers',
+            name: 'Trousers',
+            tab: 'clothes',
+            subcategory: 'bottom',
+            slot: 'bottom',
+            src: 'assets/characters/bill/clothes/bottoms/trousers.PNG',
+            icon: 'assets/characters/bill/icons/trousers.png',
+            defaultZIndex: 55,
+            isRemovable: true
+        },
+        {
             id: 'jeans2',
             name: 'Skinny jeans',
             tab: 'clothes',
@@ -83,6 +94,9 @@ export const BillWeasley: CharacterConfig = {
             slot: 'shoes',
             src: 'assets/characters/bill/clothes/shoes/boots.PNG',
             icon: 'assets/characters/bill/icons/boots.png',
+            variants: {
+                trousers: 'assets/characters/bill/clothes/shoes/boots_trousers.PNG'
+            },
             defaultZIndex: 50,
             isRemovable: true,
             isDefault: true
