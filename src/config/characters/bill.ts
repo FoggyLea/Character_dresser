@@ -146,6 +146,20 @@ export const BillWeasley: CharacterConfig = {
             isRemovable: true,
             isDefault: true
         },
+        {
+            id: 'shirt',
+            name: 'Shirt',
+            tab: 'clothes',
+            subcategory: 'top',
+            slot: 'top_mid',
+            src: 'assets/characters/bill/clothes/tops/shirt.PNG',
+            icon: 'assets/characters/bill/icons/shirt.png',
+            defaultZIndex: 35,
+            isRemovable: true,
+            variants: {
+                jacket: 'assets/characters/bill/clothes/tops/shirt_jacket.PNG'
+            }
+        },
         { id: 't_shirt',
             name: 'T-shirt',
             tab: 'clothes',
