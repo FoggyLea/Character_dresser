@@ -28,20 +28,22 @@ const container = document.getElementById('clothes-container');
 
   const equippedIds = new Set(equippedItems.map(item => item.id));
 
+  // ИСКЛЮЧАЕМ фоновые предметы и цветные плашки из создания PNG-слоев
+  const clothesItems = equippedItems.filter(item => item.slot !== 'bg' && !item.src.startsWith('#'));
+ 
   // 1. Сортируем предметы по zIndex (от заднего плана к переднему)
-const sortedItems = [...equippedItems].sort((a, b) => {
-  const zA = a.zIndexOverride ?? a.defaultZIndex;
-  const zB = b.zIndexOverride ?? b.defaultZIndex;
-  if (zA === zB) {
-    return equippedItems.indexOf(a) - equippedItems.indexOf(b);
-  }
-  return zA - zB;
-});
+const sortedItems = [...clothesItems].sort((a, b) => {
+    const zA = a.zIndexOverride ?? a.defaultZIndex;
+    const zB = b.zIndexOverride ?? b.defaultZIndex;
+    if (zA === zB) {
+      return clothesItems.indexOf(a) - clothesItems.indexOf(b);
+    }
+    return zA - zB;
+  });
 
   // 2. Генерируем слои PNG
   sortedItems.forEach(item => {
     let finalSrc = item.src;
-
     // Проверяем: есть ли спец-версия (вариант) этой вещи под другой надетый предмет?
     if (item.variants) {
       for (const [conflictId, variantSrc] of Object.entries(item.variants)) {

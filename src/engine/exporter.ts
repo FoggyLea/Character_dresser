@@ -1,4 +1,5 @@
 import type { CharacterConfig, Item } from '../types';
+import vkBridge from '@vkontakte/vk-bridge';
 
 export async function downloadOutfit(character: CharacterConfig, equippedItems: Item[]): Promise<void> {
   const canvas = document.createElement('canvas');
@@ -60,10 +61,24 @@ export async function downloadOutfit(character: CharacterConfig, equippedItems: 
       console.error(`Ошибка загрузки слоя для сохранения: ${src}`);
     }
   }
+  const dataUrl = canvas.toDataURL('image/png');
+  if (vkBridge.isWebView()) {
+    try {
+      await vkBridge.send('VKWebAppDownloadFile', {
+        url: dataUrl,
+        filename: `${character.name}_outfit.png`
+      });
+      return;
+    } catch(e) {
+      // Запасной вариант — открыть картинку в новом окне, откуда её можно зажать и сохранить
+      window.open(dataUrl, '_blank');
+      return;
+    }
+  }
 
   // 4. Генерация и скачивание файла
   const link = document.createElement('a');
   link.download = `${character.name}_outfit.png`;
-  link.href = canvas.toDataURL('image/png');
+  link.href = dataUrl;
   link.click();
 }
