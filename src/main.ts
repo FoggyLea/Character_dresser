@@ -158,9 +158,31 @@ function renderGrid() {
   });
 }
 
+function preloadCharacterAssets(char: CharacterConfig) {
+  // 1. Грузим тело
+  const bodyImg = new Image();
+  bodyImg.src = char.bodySrc;
+
+  // 2. Прогоняем все вещи и их варианты
+  char.items.forEach(item => {
+    if (item.src && !item.src.startsWith('#')) { // проигрываем только пути, пропускаем hex-цвета фона
+      const img = new Image();
+      img.src = item.src;
+    }
+
+    if (item.variants) {
+      Object.values(item.variants).forEach(variantSrc => {
+        const variantImg = new Image();
+        variantImg.src = variantSrc;
+      });
+    }
+  });
+}
+
 // 4. Загрузка персонажа
 function loadCharacter(char: CharacterConfig) {
   currentCharacter = char;
+  preloadCharacterAssets(char);
   outfit.clear();
 
   // Надеваем всё, что помечено как дефолтное для этого персонажа
