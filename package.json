@@ -11,5 +11,11 @@
   "devDependencies": {
     "typescript": "~6.0.2",
     "vite": "^8.2.2"
+  },
+  "dependencies": {
+    "@vkontakte/vk-bridge": "^3.0.2"
+  },
+  "allowScripts": {
+    "@vkontakte/vk-bridge@3.0.2": true
   }
 }

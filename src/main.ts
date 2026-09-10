@@ -4,7 +4,9 @@ import { CHARACTERS } from './config/characters';
 import { OutfitManager } from './engine/state';
 import { renderStage } from './engine/renderer';
 import { downloadOutfit } from './engine/exporter';
+import vkBridge from '@vkontakte/vk-bridge';
 
+vkBridge.send('VKWebAppInit');
 // Инициализация менеджера состояния
 const outfit = new OutfitManager();
 
