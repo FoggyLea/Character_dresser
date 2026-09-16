@@ -147,6 +147,17 @@ export const BillWeasley: CharacterConfig = {
             isDefault: true
         },
         {
+            id: 'sweater',
+            name: 'Molly`s sweater',
+            tab: 'clothes',
+            subcategory: 'top',
+            slot: 'top_mid',
+            src: 'assets/characters/bill/clothes/tops/sweater.PNG',
+            icon: 'assets/characters/bill/icons/sweater.png',
+            defaultZIndex: 65,
+            isRemovable: true
+        },
+        {
             id: 'shirt',
             name: 'Shirt',
             tab: 'clothes',
