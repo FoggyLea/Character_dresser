@@ -179,7 +179,10 @@ export const BillWeasley: CharacterConfig = {
             src: 'assets/characters/bill/clothes/tops/tshirt.PNG',
             icon: 'assets/characters/bill/icons/tshirt.png',
             defaultZIndex: 65,
-            isRemovable: true
+            isRemovable: true,
+            variants: {
+                jacket: 'assets/characters/bill/clothes/tops/tshirt_jacket.PNG'
+            }
         },
         {
             id: 'earring1',
