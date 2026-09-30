@@ -61,7 +61,7 @@ export const BillWeasley: CharacterConfig = {
             slot: 'bottom',
             src: 'assets/characters/bill/clothes/bottoms/skinny_jeans.PNG',
             icon: 'assets/characters/bill/icons/skinny_jeans.png',
-            defaultZIndex: 45,
+            defaultZIndex: 40,
             isRemovable: true
         },
         {
@@ -181,10 +181,11 @@ export const BillWeasley: CharacterConfig = {
             slot: 'top_mid',
             src: 'assets/characters/bill/clothes/tops/shirt.PNG',
             icon: 'assets/characters/bill/icons/shirt.png',
-            defaultZIndex: 35,
+            defaultZIndex: 45,
             isRemovable: true,
             variants: {
-                jacket: 'assets/characters/bill/clothes/tops/shirt_jacket.PNG'
+                jacket: 'assets/characters/bill/clothes/tops/shirt_jacket.PNG',
+                robe: 'assets/characters/bill/clothes/tops/shirt_jacket.PNG'
             }
         },
         { id: 't_shirt',
