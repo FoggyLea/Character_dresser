@@ -87,6 +87,22 @@ export const BillWeasley: CharacterConfig = {
             isRemovable: true
         },
         {
+            id: 'robe',
+            name: 'School robe',
+            tab: 'clothes',
+            subcategory: 'outerwear',
+            slot: 'outerwear',
+            src: 'assets/characters/bill/clothes/outerwear/robe.PNG',
+            icon: 'assets/characters/bill/icons/robe.png',
+            variants: {
+                jeans2: 'assets/characters/bill/clothes/outerwear/robe_skinny.PNG',
+                jeans1: 'assets/characters/bill/clothes/outerwear/robe_baggy.PNG',
+                trousers: 'assets/characters/bill/clothes/outerwear/robe_trousers.PNG'
+            },
+            defaultZIndex: 80,
+            isRemovable: true
+        },
+        {
             id: 'boots',
             name: 'Boots',
             tab: 'clothes',
