@@ -31,6 +31,17 @@ export const BillWeasley: CharacterConfig = {
             isRemovable: false
         },
         {
+            id: 'mullet',
+            name: 'Mullet',
+            tab: 'hair',
+            subcategory: 'hair',
+            slot: 'hair',
+            src: 'assets/characters/bill/hair/mullet.PNG',
+            icon: 'assets/characters/bill/icons/mullet.png',
+            defaultZIndex: 15,
+            isRemovable: false
+        },
+        {
             id: 'jeans1',
             name: 'Baggy jeans',
             tab: 'clothes',
@@ -220,7 +231,7 @@ export const BillWeasley: CharacterConfig = {
             slot: 'acc',
             src: 'assets/characters/bill/details/acc/chain.PNG',
             icon: 'assets/characters/bill/icons/ear_chain.png',
-            defaultZIndex: 15,
+            defaultZIndex: 16,
             isRemovable: true
         },
         {
