@@ -246,6 +246,31 @@ export const BillWeasley: CharacterConfig = {
             isRemovable: true
         },
         {
+            id: 'tie',
+            name: 'Tie',
+            tab: 'details',
+            subcategory: 'acc',
+            slot: 'acc',
+            src: 'assets/characters/bill/details/acc/tie.PNG',
+            icon: 'assets/characters/bill/icons/tie.png',
+            defaultZIndex: 67,
+            isRemovable: true,
+            variants: {
+                shirt: 'assets/characters/bill/details/acc/tie_shirt.PNG'
+            }
+        },
+        {
+            id: 'scarf',
+            name: 'Scarf',
+            tab: 'details',
+            subcategory: 'acc',
+            slot: 'acc',
+            src: 'assets/characters/bill/details/acc/scarf.PNG',
+            icon: 'assets/characters/bill/icons/scarf.png',
+            defaultZIndex: 85,
+            isRemovable: true
+        },
+        {
             id: 'nails1',
             name: 'Black nails',
             tab: 'details',
