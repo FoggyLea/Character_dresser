@@ -40,7 +40,7 @@ export async function downloadOutfit(character: CharacterConfig, equippedItems: 
   const sourcesToDraw = [character.bodySrc];
   
   sortedItems.forEach(item => {
-    let finalSrc = item.src;
+    let finalSrc: string | null = item.src;
     if (item.variants) {
       for (const [conflictId, variantSrc] of Object.entries(item.variants)) {
         if (equippedIds.has(conflictId)) {
@@ -49,7 +49,9 @@ export async function downloadOutfit(character: CharacterConfig, equippedItems: 
         }
       }
     }
+    if (finalSrc) {
     sourcesToDraw.push(finalSrc);
+  }
   });
 
   // 3. Последовательная отрисовка на Canvas

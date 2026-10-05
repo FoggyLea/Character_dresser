@@ -9,6 +9,7 @@ export type Subcategory =
 export type LayerSlot = 
   | 'top_inner'  // Сетка, майки под низ
   | 'top_mid'    // Футболки, топы
+  | 'top_outer'  // Жилетки, порупеи, корсеты поверх топов
   | 'outerwear'  // Жилеты, куртки
   | 'bottom'     // Штаны
   | 'shoes'      // Обувь
@@ -41,7 +42,7 @@ export interface Item {
     zIndexOverride?: number;
     isRemovable?: boolean;
     isDefault?: boolean;
-    variants?: Record<string, string>;
+    variants?: Record<string, string | null>;
 }
 
 export interface CharacterConfig {
@@ -60,8 +61,9 @@ export const SUB_CATEGORIES_MAP: Record<TabCategory, SubCategoryConfig[]> = {
             label: 'Top',
             subTabs: [
                 { id: 'all', label: 'All' },
+                { id: 'top_inner', label: 'Undertops', slotFilter: 'top_inner' },
                 { id: 'top_mid', label: 'Tops', slotFilter: 'top_mid' },
-                { id: 'top_inner', label: 'Undertops', slotFilter: 'top_inner' }
+                {id: 'top_outer', label: 'Over Tops', slotFilter: 'top_outer'}
             ]
         },
         { id: 'bottom', label: 'Bottom' },

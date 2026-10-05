@@ -140,6 +140,11 @@ function renderGrid() {
       img.src = item.icon;
       img.alt = item.name;
       card.appendChild(img);
+    } else if (item.src.startsWith('#')) {
+      const colorBox = document.createElement('div');
+      colorBox.className = 'color-preview';
+      colorBox.style.backgroundColor = item.src;
+      card.appendChild(colorBox);
     }
 
     // 2. Подпись (ровно одна штука снизу)

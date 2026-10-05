@@ -169,6 +169,10 @@ export const BillWeasley: CharacterConfig = {
             slot: 'top_mid',
             src: 'assets/characters/bill/clothes/tops/red_top.PNG',
             icon: 'assets/characters/bill/icons/red_top.png',
+            variants: {
+                school_vest: 'assets/characters/bill/clothes/tops/red_top_sweater.PNG',
+                sweater: 'assets/characters/bill/clothes/tops/red_top_sweater.PNG'
+            },
             defaultZIndex: 65,
             isRemovable: true,
             isDefault: true
@@ -178,10 +182,24 @@ export const BillWeasley: CharacterConfig = {
             name: 'Molly`s sweater',
             tab: 'clothes',
             subcategory: 'top',
-            slot: 'top_mid',
+            slot: 'top_outer',
             src: 'assets/characters/bill/clothes/tops/sweater.PNG',
             icon: 'assets/characters/bill/icons/sweater.png',
-            defaultZIndex: 65,
+            variants: {
+                shirt: 'assets/characters/bill/clothes/tops/sweater_shirt.PNG'
+            },
+            defaultZIndex: 70,
+            isRemovable: true
+        },
+        {
+            id: 'school_vest',
+            name: 'School vest',
+            tab: 'clothes',
+            subcategory: 'top',
+            slot: 'top_outer',
+            src: 'assets/characters/bill/clothes/tops/school_vest.PNG',
+            icon: 'assets/characters/bill/icons/school_vest.png',
+            defaultZIndex: 70,
             isRemovable: true
         },
         {
@@ -196,7 +214,8 @@ export const BillWeasley: CharacterConfig = {
             isRemovable: true,
             variants: {
                 jacket: 'assets/characters/bill/clothes/tops/shirt_jacket.PNG',
-                robe: 'assets/characters/bill/clothes/tops/shirt_jacket.PNG'
+                robe: 'assets/characters/bill/clothes/tops/shirt_jacket.PNG',
+                sweater: 'assets/characters/bill/clothes/tops/shirt_jacket.PNG'
             }
         },
         { id: 't_shirt',
@@ -209,7 +228,9 @@ export const BillWeasley: CharacterConfig = {
             defaultZIndex: 65,
             isRemovable: true,
             variants: {
-                jacket: 'assets/characters/bill/clothes/tops/tshirt_jacket.PNG'
+                jacket: 'assets/characters/bill/clothes/tops/tshirt_jacket.PNG',
+                school_vest: 'assets/characters/bill/clothes/tops/tshirt_jacket.PNG',
+                sweater: null
             }
         },
         {

@@ -43,7 +43,7 @@ const sortedItems = [...clothesItems].sort((a, b) => {
 
   // 2. Генерируем слои PNG
   sortedItems.forEach(item => {
-    let finalSrc = item.src;
+    let finalSrc: string | null = item.src;
     // Проверяем: есть ли спец-версия (вариант) этой вещи под другой надетый предмет?
     if (item.variants) {
       for (const [conflictId, variantSrc] of Object.entries(item.variants)) {
@@ -53,6 +53,7 @@ const sortedItems = [...clothesItems].sort((a, b) => {
         }
       }
     }
+    if (!finalSrc) return;
 
     // Создаем слой
     const img = document.createElement('img');
