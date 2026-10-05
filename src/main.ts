@@ -177,8 +177,10 @@ function preloadCharacterAssets(char: CharacterConfig) {
 
     if (item.variants) {
       Object.values(item.variants).forEach(variantSrc => {
-        const variantImg = new Image();
-        variantImg.src = variantSrc;
+        if (variantSrc) {
+      const variantImg = new Image();
+      variantImg.src = variantSrc;
+    }
       });
     }
   });
