@@ -183,7 +183,8 @@ export const BillWeasley: CharacterConfig = {
             src: 'assets/characters/bill/clothes/tops/sweater.PNG',
             icon: 'assets/characters/bill/icons/sweater.png',
             variants: {
-                shirt: 'assets/characters/bill/clothes/tops/sweater_shirt.PNG'
+                white_shirt: 'assets/characters/bill/clothes/tops/sweater_shirt.PNG',
+                black_shirt: 'assets/characters/bill/clothes/tops/sweater_black_shirt.PNG'
             },
             defaultZIndex: 70,
             isRemovable: true
@@ -200,8 +201,8 @@ export const BillWeasley: CharacterConfig = {
             isRemovable: true
         },
         {
-            id: 'shirt',
-            name: 'Shirt',
+            id: 'white_shirt',
+            name: 'White shirt',
             tab: 'clothes',
             subcategory: 'top',
             slot: 'top_mid',
@@ -213,6 +214,21 @@ export const BillWeasley: CharacterConfig = {
                 jacket: 'assets/characters/bill/clothes/tops/shirt_jacket.PNG',
                 robe: 'assets/characters/bill/clothes/tops/shirt_jacket.PNG',
                 sweater: 'assets/characters/bill/clothes/tops/shirt_jacket.PNG'
+            }
+        },
+        {
+            id: 'black_shirt',
+            name: 'Black shirt',
+            tab: 'clothes',
+            subcategory: 'top',
+            slot: 'top_mid',
+            src: 'assets/characters/bill/clothes/tops/black_shirt.PNG',
+            icon: 'assets/characters/bill/icons/black_shirt.png',
+            defaultZIndex: 45,
+            isRemovable: true,
+            variants: {
+                jacket: 'assets/characters/bill/clothes/tops/black_shirt_jacket.PNG',
+                sweater: 'assets/characters/bill/clothes/tops/black_shirt_jacket.PNG'
             }
         },
         { id: 't_shirt',
@@ -274,7 +290,8 @@ export const BillWeasley: CharacterConfig = {
             defaultZIndex: 67,
             isRemovable: true,
             variants: {
-                shirt: 'assets/characters/bill/details/acc/tie_shirt.PNG'
+                white_shirt: 'assets/characters/bill/details/acc/tie_shirt.PNG',
+                black_shirt: 'assets/characters/bill/details/acc/tie_black_shirt.PNG'
             }
         },
         {
