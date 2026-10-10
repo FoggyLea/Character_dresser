@@ -126,17 +126,6 @@ export const BillWeasley: CharacterConfig = {
             isDefault: true
         },
         {
-            id: 'boots2',
-            name: 'Dragonhide boots 2',
-            tab: 'clothes',
-            subcategory: 'shoes',
-            slot: 'shoes',
-            src: 'assets/characters/bill/clothes/shoes/boots2.PNG',
-            icon: 'assets/characters/bill/icons/boots.png',
-            defaultZIndex: 50,
-            isRemovable: true
-        },
-        {
             id: 'sneakers',
             name: 'Sneakers',
             tab: 'clothes',
