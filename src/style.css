@@ -208,7 +208,7 @@ body {
 }
 
 /* --- 2. ПРОМЕЖУТОЧНЫЕ ЭКРАНЫ (Планшеты / Десктопный ВК) (от 681px до 1024px) --- */
-@media (min-width: 681px) and (max-width: 1024px) {
+@media (min-width: 721px) and (max-width: 1024px) {
   .app-container {
     padding: 8px;
     gap: 8px;
@@ -240,7 +240,7 @@ body {
 }
 
 /* --- 3. МОБИЛЬНЫЕ ТЕЛЕФОНЫ (до 680px) --- */
-@media (max-width: 680px) {
+@media (max-width: 720px) {
   body {
     overflow: hidden;
   }
