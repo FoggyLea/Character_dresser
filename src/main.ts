@@ -205,37 +205,45 @@ function renderGrid() {
   });
 }
 
-function preloadCharacterAssets(char: CharacterConfig) {
-  // 1. Грузим тело
-  const bodyImg = new Image();
-  bodyImg.src = char.bodySrc;
+function preloadCharacterAssets(char: CharacterConfig): Promise<void[]> {
+  const sources: string[] = [char.bodySrc];
 
-  // 2. Прогоняем все вещи и их варианты
   char.items.forEach(item => {
-    if (item.src && !item.src.startsWith('#')) { // проигрываем только пути, пропускаем hex-цвета фона
-      const img = new Image();
-      img.src = item.src;
+    if (item.src && !item.src.startsWith('#')) {
+      sources.push(item.src);
     }
-
     if (item.variants) {
-      Object.values(item.variants).forEach(variant => {
-        if (variant.src && !variant.src.startsWith('#')) {
-          const variantImg = new Image();
-          variantImg.src = variant.src;
-        }
+      Object.values(item.variants).forEach(v => {
+        if (v.src && !v.src.startsWith('#')) sources.push(v.src);
       });
     }
   });
+
+  const promises = sources.map(src => {
+    return new Promise<void>((resolve) => {
+      const img = new Image();
+      img.onload = () => resolve();
+      img.onerror = () => resolve(); // Игнорируем ошибки, чтобы загрузка не зависала намертво
+      img.src = src;
+    });
+  });
+
+  return Promise.all(promises);
 }
 
 // 4. Загрузка персонажа
-function loadCharacter(char: CharacterConfig) {
+async function loadCharacter(char: CharacterConfig) {
+  const loader = document.getElementById('loading-overlay');
+  if (loader) loader.classList.remove('hidden');
+
   currentCharacter = char;
-  preloadCharacterAssets(char);
+  
+  // Ждем, пока ВСЕ ассеты загрузятся в кэш браузера
+  await preloadCharacterAssets(char);
+
   outfit.clear();
 
-  // Надеваем всё, что помечено как дефолтное для этого персонажа
-const defaultPreset = char.presets?.find(p => p.id === char.defaultPresetId) || char.presets?.[0];
+  const defaultPreset = char.presets?.find(p => p.id === char.defaultPresetId) || char.presets?.[0];
   if (defaultPreset) {
     outfit.applyPreset(defaultPreset, char.items);
   }
@@ -243,13 +251,15 @@ const defaultPreset = char.presets?.find(p => p.id === char.defaultPresetId) || 
   const bodyImg = document.getElementById('body-layer') as HTMLImageElement;
   if (bodyImg) bodyImg.src = char.bodySrc;
 
-  // Обновляем визуальное состояние кнопок и сцены
   renderPresetsUI(char);
   updateMainTabsUI();
   renderStage(currentCharacter, outfit.getEquippedItems());
   renderSubtabs(currentTab);
   renderGrid();
   renderCharacterSelection();
+
+  // Прячем лоадер, когда всё нарисовано
+  if (loader) loader.classList.add('hidden');
 }
 
 // 5. Модалка выбора персонажей
