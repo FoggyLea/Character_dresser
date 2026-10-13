@@ -129,6 +129,9 @@ body {
   display: flex;
   gap: 8px;
   overflow-x: auto;
+  white-space: nowrap;
+  flex-shrink: 0;
+  padding-bottom: 2px;
 }
 
 .tab-btn {
@@ -204,72 +207,93 @@ body {
   background: #2ecc71;
 }
 
-/* Мобильная адаптация */
-@media (max-width: 1024px) {
-  body {
-    overflow: hidden; /* Запрещаем скролл всей страницы */
-  }
-
+/* --- 2. ПРОМЕЖУТОЧНЫЕ ЭКРАНЫ (Планшеты / Десктопный ВК) (от 681px до 1024px) --- */
+@media (min-width: 681px) and (max-width: 1024px) {
   .app-container {
-    flex-direction: column;
     padding: 8px;
     gap: 8px;
-    height: 100vh;
-    overflow: hidden;
   }
 
-  /* Верхняя панель с персонажем заблокирована */
-  .stage-wrapper {
-    flex: 0 0 55vh;
-    height: 55vh;
-    width: 100%;
-    overflow: hidden;
-  }
-
-  /* Нижняя панель занимает оставшиеся 35% */
   .ui-panel {
-    width: 100%;
-    flex: 1;
-   /* height: calc(35vh - 24px);*/
-    min-height: 0; /* Разрешаем панели сжиматься */
-    max-width: 100%; /**/
-    overflow: hidden;
+    width: 320px;
+    min-width: 260px; /* Разрешаем сжиматься, но с предельным минимумом */
+    max-width: 40vw;
     padding: 8px;
     gap: 8px;
+    overflow: hidden; /* Контейнер держит форму */
   }
 
-  /* Уменьшенные иконки на мобилках (4 в ряд) */
   .item-grid {
-    flex: 1;
-    min-height: 0; /* КЛЮЧЕВОЕ: заставляет flex-элемент включить внутренний скролл */
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch; /* Плавный скролл на iOS */
-    touch-action: pan-y; /* Разрешает вертикальный свайп пальцем */
-
-    grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
-    padding-bottom: 16px;
-  }
-
-  .item-card {
-    padding: 4px;
-  }
-
-  .item-card img {
-    max-height: 80%; /* Ограничиваем высоту картинки, оставляя место под текст */
-  }
-
-  .item-label {
-    font-size: 10px;
-    line-height: 1.2;
-    white-space: normal; /* Разрешаем перенос текста на 2 строки, если не влезает */
-    word-break: break-word;
-    margin-top: 2px;
+    grid-template-columns: repeat(3, 1fr); /* 3 в ряд, чтобы иконки не мелчили */
+    gap: 6px;
   }
 
   .tab-btn {
     padding: 6px 10px;
-    font-size: 13px;
+    font-size: 12px;
+  }
+
+  .btn-save {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+}
+
+/* --- 3. МОБИЛЬНЫЕ ТЕЛЕФОНЫ (до 680px) --- */
+@media (max-width: 680px) {
+  body {
+    overflow: hidden;
+  }
+
+  .app-container {
+    flex-direction: column;
+    padding: 6px;
+    gap: 6px;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  .stage-wrapper {
+    flex: 0 0 65vh; /* 65% под модель */
+    height: 65vh;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .ui-panel {
+    width: 100%;
+    flex: 1;
+    min-height: 0;
+    max-width: 100%;
+    padding: 6px;
+    gap: 6px;
+  }
+
+  .item-grid {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-y;
+
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+    padding-bottom: 12px;
+  }
+
+  .item-card {
+    padding: 3px;
+  }
+
+  .item-label {
+    font-size: 9px;
+    line-height: 1.1;
+    margin-top: 2px;
+  }
+
+  .tab-btn, .btn-save {
+    padding: 5px 8px;
+    font-size: 11px;
   }
 }
 

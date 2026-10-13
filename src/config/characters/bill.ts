@@ -304,7 +304,7 @@ export const BillWeasley: CharacterConfig = {
             isRemovable: true,
             variants: {
                 white_shirt: {src:'assets/characters/bill/details/acc/tie_shirt.PNG'},
-                black_shirt: {src:'assets/characters/bill/details/acc/tie_black_shirt.PNG}'}
+                black_shirt: {src:'assets/characters/bill/details/acc/tie_black_shirt.PNG'}
             }
         },
         {
