@@ -214,11 +214,11 @@ function preloadCharacterAssets(char: CharacterConfig) {
     }
 
     if (item.variants) {
-      Object.values(item.variants).forEach(variantSrc => {
-        if (variantSrc) {
-      const variantImg = new Image();
-      variantImg.src = variantSrc;
-    }
+      Object.values(item.variants).forEach(variant => {
+        if (variant.src && !variant.src.startsWith('#')) {
+          const variantImg = new Image();
+          variantImg.src = variant.src;
+        }
       });
     }
   });

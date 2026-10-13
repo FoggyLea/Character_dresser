@@ -30,6 +30,11 @@ export interface SubCategoryConfig {
   subTabs?: SubSubCategory[];
 }
 
+export interface VariantConfig {
+  src?: string | null;
+  zIndex?: number;
+}
+
 export interface Item {
     id: string;
     name: string;
@@ -42,7 +47,7 @@ export interface Item {
     zIndexOverride?: number;
     isRemovable?: boolean;
     isDefault?: boolean;
-    variants?: Record<string, string | null>;
+    variants?: Record<string, VariantConfig>;
     isCustomColor?: boolean;
 }
 

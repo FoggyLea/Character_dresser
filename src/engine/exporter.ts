@@ -28,30 +28,43 @@ export async function downloadOutfit(character: CharacterConfig, equippedItems: 
 
   // 2. Подготовка слоев в правильном порядке z-index
   const equippedIds = new Set(equippedItems.map(i => i.id));
-  const clothesItems = equippedItems.filter(i => i.slot !== 'bg');
-  
-  const sortedItems = [...clothesItems].sort((a, b) => {
-    const zA = a.zIndexOverride ?? a.defaultZIndex;
-    const zB = b.zIndexOverride ?? b.defaultZIndex;
-    return zA === zB ? clothesItems.indexOf(a) - clothesItems.indexOf(b) : zA - zB;
-  });
+  const clothesItems = equippedItems.filter(i => i.slot !== 'bg' && !i.src.startsWith('#'));
 
-  // Собираем массив путей: сначала тело, затем сортированная одежда
-  const sourcesToDraw = [character.bodySrc];
-  
-  sortedItems.forEach(item => {
+  const preparedItems = clothesItems.map(item => {
     let finalSrc: string | null = item.src;
+    let effectiveZIndex = item.zIndexOverride ?? item.defaultZIndex;
+
     if (item.variants) {
-      for (const [conflictId, variantSrc] of Object.entries(item.variants)) {
+      for (const [conflictId, variant] of Object.entries(item.variants)) {
         if (equippedIds.has(conflictId)) {
-          finalSrc = variantSrc;
+          if (variant.src !== undefined) {
+            finalSrc = variant.src;
+          }
+          if (variant.zIndex !== undefined) {
+            effectiveZIndex = variant.zIndex;
+          }
           break;
         }
       }
     }
+
+    return { item, finalSrc, effectiveZIndex };
+  });
+
+  // Теперь сортируем предметы по пересчитанному effectiveZIndex
+  preparedItems.sort((a, b) => {
+    if (a.effectiveZIndex === b.effectiveZIndex) {
+      return clothesItems.indexOf(a.item) - clothesItems.indexOf(b.item);
+    }
+    return a.effectiveZIndex - b.effectiveZIndex;
+  });
+
+  // Собираем массив путей: сначала тело, затем сортированная одежда
+  const sourcesToDraw = [character.bodySrc];
+  preparedItems.forEach(({ finalSrc }) => {
     if (finalSrc) {
-    sourcesToDraw.push(finalSrc);
-  }
+      sourcesToDraw.push(finalSrc);
+    }
   });
 
   // 3. Последовательная отрисовка на Canvas

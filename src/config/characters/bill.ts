@@ -108,9 +108,9 @@ export const BillWeasley: CharacterConfig = {
             src: 'assets/characters/bill/clothes/outerwear/robe.PNG',
             icon: 'assets/characters/bill/icons/robe.png',
             variants: {
-                jeans2: 'assets/characters/bill/clothes/outerwear/robe_skinny.PNG',
-                jeans1: 'assets/characters/bill/clothes/outerwear/robe_baggy.PNG',
-                trousers: 'assets/characters/bill/clothes/outerwear/robe_trousers.PNG'
+                jeans2: {src:'assets/characters/bill/clothes/outerwear/robe_skinny.PNG'},
+                jeans1: {src:'assets/characters/bill/clothes/outerwear/robe_baggy.PNG'},
+                trousers: {src:'assets/characters/bill/clothes/outerwear/robe_trousers.PNG'}
             },
             defaultZIndex: 80,
             isRemovable: true
@@ -180,8 +180,8 @@ export const BillWeasley: CharacterConfig = {
             src: 'assets/characters/bill/clothes/tops/red_top.PNG',
             icon: 'assets/characters/bill/icons/red_top.png',
             variants: {
-                school_vest: 'assets/characters/bill/clothes/tops/red_top_sweater.PNG',
-                sweater: 'assets/characters/bill/clothes/tops/red_top_sweater.PNG'
+                school_vest: {src:'assets/characters/bill/clothes/tops/red_top_sweater.PNG'},
+                sweater: {src:'assets/characters/bill/clothes/tops/red_top_sweater.PNG'}
             },
             defaultZIndex: 65,
             isRemovable: true,
@@ -198,9 +198,9 @@ export const BillWeasley: CharacterConfig = {
             defaultZIndex: 45,
             isRemovable: true,
             variants: {
-                jacket: 'assets/characters/bill/clothes/tops/shirt_jacket.PNG',
-                robe: 'assets/characters/bill/clothes/tops/shirt_jacket.PNG',
-                sweater: 'assets/characters/bill/clothes/tops/shirt_jacket.PNG'
+                jacket: {src:'assets/characters/bill/clothes/tops/shirt_jacket.PNG'},
+                robe: {src:'assets/characters/bill/clothes/tops/shirt_jacket.PNG'},
+                sweater: {src:'assets/characters/bill/clothes/tops/shirt_jacket.PNG'}
             }
         },
         {
@@ -214,8 +214,8 @@ export const BillWeasley: CharacterConfig = {
             defaultZIndex: 45,
             isRemovable: true,
             variants: {
-                jacket: 'assets/characters/bill/clothes/tops/black_shirt_jacket.PNG',
-                sweater: 'assets/characters/bill/clothes/tops/black_shirt_jacket.PNG'
+                jacket: {src:'assets/characters/bill/clothes/tops/black_shirt_jacket.PNG'},
+                sweater: {src:'assets/characters/bill/clothes/tops/black_shirt_jacket.PNG'}
             }
         },
         { id: 't_shirt',
@@ -228,9 +228,9 @@ export const BillWeasley: CharacterConfig = {
             defaultZIndex: 65,
             isRemovable: true,
             variants: {
-                jacket: 'assets/characters/bill/clothes/tops/tshirt_jacket.PNG',
-                school_vest: 'assets/characters/bill/clothes/tops/tshirt_jacket.PNG',
-                sweater: null
+                jacket: {src:'assets/characters/bill/clothes/tops/tshirt_jacket.PNG'},
+                school_vest: {src:'assets/characters/bill/clothes/tops/tshirt_jacket.PNG'},
+                sweater: {src: null}
             }
         },
         {
@@ -242,8 +242,8 @@ export const BillWeasley: CharacterConfig = {
             src: 'assets/characters/bill/clothes/tops/sweater.PNG',
             icon: 'assets/characters/bill/icons/sweater.png',
             variants: {
-                white_shirt: 'assets/characters/bill/clothes/tops/sweater_shirt.PNG',
-                black_shirt: 'assets/characters/bill/clothes/tops/sweater_black_shirt.PNG'
+                white_shirt: {src:'assets/characters/bill/clothes/tops/sweater_shirt.PNG'},
+                black_shirt: {src:'assets/characters/bill/clothes/tops/sweater_black_shirt.PNG'}
             },
             defaultZIndex: 70,
             isRemovable: true
@@ -303,8 +303,8 @@ export const BillWeasley: CharacterConfig = {
             defaultZIndex: 67,
             isRemovable: true,
             variants: {
-                white_shirt: 'assets/characters/bill/details/acc/tie_shirt.PNG',
-                black_shirt: 'assets/characters/bill/details/acc/tie_black_shirt.PNG'
+                white_shirt: {src:'assets/characters/bill/details/acc/tie_shirt.PNG'},
+                black_shirt: {src:'assets/characters/bill/details/acc/tie_black_shirt.PNG}'}
             }
         },
         {
@@ -327,9 +327,9 @@ export const BillWeasley: CharacterConfig = {
             src: 'assets/characters/bill/details/acc/belt.PNG',
             icon: 'assets/characters/bill/icons/belt.png',
             variants: {
-                jeans1: 'assets/characters/bill/details/acc/belt_baggy.PNG',
-                jeans2: 'assets/characters/bill/details/acc/belt_skinny.PNG',
-                trousers: 'assets/characters/bill/details/acc/belt_trousers.PNG'
+                jeans1: {src: 'assets/characters/bill/details/acc/belt_baggy.PNG'},
+                jeans2: {src: 'assets/characters/bill/details/acc/belt_skinny.PNG', zIndex: 43},
+                trousers: {src: 'assets/characters/bill/details/acc/belt_trousers.PNG'}
             },
             defaultZIndex: 60,
             isRemovable: true
@@ -462,7 +462,37 @@ export const BillWeasley: CharacterConfig = {
             src: '#ffffff', // Начальный цвет по умолчанию
             defaultZIndex: 1,
             isCustomColor: true // Флаг для определения в UI
-}
+        },
+        {
+            id: 'hogwarts',
+            name: 'Hogwarts',
+            tab: 'background',
+            subcategory: 'bg_image',
+            slot: 'bg',
+            src: 'assets/characters/bill/bg/hogwarts.png',
+            icon: 'assets/characters/bill/icons/hogwarts.png',
+            defaultZIndex: 1
+        },
+        {
+            id: 'tomb',
+            name: 'Tomb',
+            tab: 'background',
+            subcategory: 'bg_image',
+            slot: 'bg',
+            src: 'assets/characters/bill/bg/tomb.png',
+            icon: 'assets/characters/bill/icons/tomb.png',
+            defaultZIndex: 1
+        },
+        {
+            id: 'cornwall',
+            name: 'Cornwall',
+            tab: 'background',
+            subcategory: 'bg_image',
+            slot: 'bg',
+            src: 'assets/characters/bill/bg/cornwall.png',
+            icon: 'assets/characters/bill/icons/cornwall.png',
+            defaultZIndex: 1
+        }
     ],
     // PRESETS
     presets: [

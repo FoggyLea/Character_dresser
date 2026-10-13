@@ -63,17 +63,23 @@ export class OutfitManager {
   }
 
   public applyPreset(preset: Preset, allCharacterItems: Item[]): void {
-    const currentItems= this.getEquippedItems();
-    const nonRemovable = currentItems.filter(i => i.isRemovable === false);
-    this.clear();
+  const currentItems = this.getEquippedItems();
+  const nonRemovable = currentItems.filter(i => i.isRemovable === false);
+  const currentBg = currentItems.find(i => i.slot === 'bg');
 
-    nonRemovable.forEach(item => this.toggleItem(item));
+  const presetItems = preset.itemIds
+    .map(id => allCharacterItems.find(i => i.id === id))
+    .filter((item): item is Item => item !== undefined);
 
-    preset.itemIds.forEach(id => {
-      const item = allCharacterItems.find(i => i.id === id);
-      if (item){
-        this.toggleItem(item)
-      }
-    })
+  const hasBgInPreset = presetItems.some(i => i.slot === 'bg');
+  this.clear();
+  nonRemovable.forEach(item => this.toggleItem(item));
+
+  if (!hasBgInPreset && currentBg) {
+    this.toggleItem(currentBg);
   }
+  presetItems.forEach(item => {
+    this.toggleItem(item);
+  });
+}
 }

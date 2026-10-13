@@ -18,6 +18,9 @@ const container = document.getElementById('clothes-container');
       } else {
         bgLayer.style.backgroundImage = `url(${bgItem.src})`;
         bgLayer.style.backgroundColor = 'transparent';
+        bgLayer.style.backgroundSize = 'cover';
+        bgLayer.style.backgroundPosition = 'center';
+        bgLayer.style.backgroundRepeat = 'no-repeat';
       }
     } else {
       // Сброс: при снятии предмета возвращаем прозрачность (будет виден базовый серый цвет сцены)
@@ -31,36 +34,47 @@ const container = document.getElementById('clothes-container');
   // ИСКЛЮЧАЕМ фоновые предметы и цветные плашки из создания PNG-слоев
   const clothesItems = equippedItems.filter(item => item.slot !== 'bg' && !item.src.startsWith('#'));
  
-  // 1. Сортируем предметы по zIndex (от заднего плана к переднему)
-const sortedItems = [...clothesItems].sort((a, b) => {
-    const zA = a.zIndexOverride ?? a.defaultZIndex;
-    const zB = b.zIndexOverride ?? b.defaultZIndex;
-    if (zA === zB) {
-      return clothesItems.indexOf(a) - clothesItems.indexOf(b);
-    }
-    return zA - zB;
-  });
-
-  // 2. Генерируем слои PNG
-  sortedItems.forEach(item => {
+// 1. Подготавливаем элементы с учетом возможных вариантов и переопределений zIndex
+  const preparedItems = clothesItems.map(item => {
+    // По умолчанию всегда берем БАЗОВЫЕ значения предмета
     let finalSrc: string | null = item.src;
-    // Проверяем: есть ли спец-версия (вариант) этой вещи под другой надетый предмет?
+    let effectiveZIndex = item.zIndexOverride ?? item.defaultZIndex;
+
     if (item.variants) {
-      for (const [conflictId, variantSrc] of Object.entries(item.variants)) {
+      for (const [conflictId, variant] of Object.entries(item.variants)) {
+        // Проверяем, надета ли вещь-конфликт СЕЙЧАС
         if (equippedIds.has(conflictId)) {
-          finalSrc = variantSrc; // Заменяем картинку на заправленную/уженную
-          break;
+          if (variant.src !== undefined) {
+            finalSrc = variant.src;
+          }
+          if (variant.zIndex !== undefined) {
+            effectiveZIndex = variant.zIndex;
+          }
+          break; // Нашли совпадение — выходим из цикла
         }
       }
     }
+
+    return { item, finalSrc, effectiveZIndex };
+  });
+
+  // 2. Сортируем предметы по пересчитанному effectiveZIndex
+  preparedItems.sort((a, b) => {
+    if (a.effectiveZIndex === b.effectiveZIndex) {
+      return clothesItems.indexOf(a.item) - clothesItems.indexOf(b.item);
+    }
+    return a.effectiveZIndex - b.effectiveZIndex;
+  });
+
+  // 3. Генерируем слои PNG
+  preparedItems.forEach(({ item, finalSrc, effectiveZIndex }) => {
     if (!finalSrc) return;
 
-    // Создаем слой
     const img = document.createElement('img');
     img.src = finalSrc;
     img.alt = item.name;
     img.className = 'layer';
-    img.style.zIndex = (item.zIndexOverride ?? item.defaultZIndex).toString();
+    img.style.zIndex = effectiveZIndex.toString();
 
     container.appendChild(img);
   });
