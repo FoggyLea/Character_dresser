@@ -6,6 +6,7 @@ export const BillWeasley: CharacterConfig = {
     author: 'leafoggy',
     canvasSize: { width: 1450, height: 1950 },
     bodySrc: 'assets/characters/bill/base/body.PNG',
+    defaultPresetId: 'default',
     items: [
         {
             id: 'ponytail',
@@ -84,7 +85,8 @@ export const BillWeasley: CharacterConfig = {
             src: 'assets/characters/bill/clothes/outerwear/denim_vest.PNG',
             icon: 'assets/characters/bill/icons/denim_vest.png',
             defaultZIndex: 75,
-            isRemovable: true
+            isRemovable: true,
+            isDefault: true
         },
         {
             id: 'jacket',
@@ -134,6 +136,17 @@ export const BillWeasley: CharacterConfig = {
             src: 'assets/characters/bill/clothes/shoes/sneakers.PNG',
             icon: 'assets/characters/bill/icons/sneakers.png',
             defaultZIndex: 50,
+            isRemovable: true
+        },
+        {
+            id: 'formal_shoes',
+            name: 'Formal shoes',
+            tab: 'clothes',
+            subcategory: 'shoes',
+            slot: 'shoes',
+            src: 'assets/characters/bill/clothes/shoes/formal_shoes.PNG',
+            icon: 'assets/characters/bill/icons/formal_shoes.png',
+            defaultZIndex: 35,
             isRemovable: true
         },
         {
@@ -394,5 +407,25 @@ export const BillWeasley: CharacterConfig = {
             src: '#DCA1A1',
             defaultZIndex: 1
         }
+    ],
+    // PRESETS
+    presets: [
+        {
+            id: 'default',
+            name: 'Casual look',
+            itemIds: ['ponytail', 'jeans1', 'red_top', 'vest', 'boots', 'scars', 'bags', 'earring1', 'earring3']
+        },
+        {
+            id: 'school',
+            name: 'Hogwarts uniform',
+            itemIds: ['mullet', 'bags', 'formal_shoes', 'robe', 'trousers', 'tie', 'white_shirt', 'school_vest']
+        },
+        {
+            id: 'nothing',
+            name: 'Remove all',
+            itemIds: []
+        }
     ]
 };
+
+

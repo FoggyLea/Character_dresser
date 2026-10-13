@@ -1,4 +1,4 @@
-import type { LayerSlot, Item } from '../types';
+import type { LayerSlot, Item, Preset } from '../types';
 
 export class OutfitManager {
   private equipped = new Map<LayerSlot, Item[]>();
@@ -60,5 +60,20 @@ export class OutfitManager {
 
   public clear(): void {
     this.equipped.clear();
+  }
+
+  public applyPreset(preset: Preset, allCharacterItems: Item[]): void {
+    const currentItems= this.getEquippedItems();
+    const nonRemovable = currentItems.filter(i => i.isRemovable === false);
+    this.clear();
+
+    nonRemovable.forEach(item => this.toggleItem(item));
+
+    preset.itemIds.forEach(id => {
+      const item = allCharacterItems.find(i => i.id === id);
+      if (item){
+        this.toggleItem(item)
+      }
+    })
   }
 }

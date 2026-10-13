@@ -45,12 +45,20 @@ export interface Item {
     variants?: Record<string, string | null>;
 }
 
+export interface Preset {
+  id: string;
+  name: string;
+  itemIds: string[];
+}
+
 export interface CharacterConfig {
     id: string;
     name: string;
     author: string;
     canvasSize: { width: number; height: number };
     bodySrc: string;
+    presets?: Preset[];
+    defaultPresetId?: string;
     items: Item[];
 }
 

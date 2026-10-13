@@ -114,12 +114,15 @@ body {
 /* Правая панель (расширена до 440px) */
 .ui-panel {
   width: 440px;
+  max-width: 40vw; /**/
   display: flex;
   flex-direction: column;
   background-color: var(--panel-bg);
   border-radius: 8px;
   padding: 12px;
   gap: 12px;
+  max-height: 100%; /**/
+  min-height: 0; /**/
 }
 
 .tabs-main, .tabs-sub {
@@ -144,6 +147,7 @@ body {
 
 .item-grid {
   flex: 1;
+  min-height: 0; /**/
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-auto-rows: max-content;
@@ -201,7 +205,7 @@ body {
 }
 
 /* Мобильная адаптация */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   body {
     overflow: hidden; /* Запрещаем скролл всей страницы */
   }
@@ -228,6 +232,7 @@ body {
     flex: 1;
    /* height: calc(35vh - 24px);*/
     min-height: 0; /* Разрешаем панели сжиматься */
+    max-width: 100%; /**/
     overflow: hidden;
     padding: 8px;
     gap: 8px;
@@ -353,4 +358,70 @@ body {
 
 .btn-char:hover {
   background: var(--accent);
+}
+
+/* Кнопка пресетов*/
+.preset-dropdown-container {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 500;
+}
+
+.preset-btn {
+  padding: 8px 14px;
+  background: rgba(45, 45, 50, 0.85);
+  color: #fff;
+  border: 1px solid #4f4f56;
+  border-radius: 6px;
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+  font-size: 14px;
+  font-weight: 500;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.preset-btn:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+/* Выпадающее меню с пресетами */
+.preset-menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  min-width: 160px;
+  background: rgba(45, 45, 50, 0.95);
+  border: 1px solid #4f4f56;
+  border-radius: 8px;
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
+  z-index: 501;
+}
+
+.preset-menu.hidden {
+  display: none;
+}
+
+/* Пункты пресетов */
+.preset-menu-item {
+  padding: 8px 12px;
+  background: transparent;
+  color: #e4e4e7;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  text-align: left;
+  font-size: 13px;
+  transition: background 0.15s, color 0.15s;
+}
+
+.preset-menu-item:hover {
+  background: var(--accent);
+  color: #fff;
 }

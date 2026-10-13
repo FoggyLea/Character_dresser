@@ -25,6 +25,8 @@ const charModal = document.getElementById('char-modal-overlay')!;
 const charList = document.getElementById('char-list')!;
 const saveBtn = document.getElementById('save-btn')!;
 const nestedSubtabsContainer = document.getElementById('nested-subtabs')!;
+const presetBtn = document.getElementById('preset-btn') as HTMLButtonElement;
+const presetMenu = document.getElementById('preset-menu') as HTMLDivElement;
 
 // Функция синхронизации активности главных вкладок
 function updateMainTabsUI() {
@@ -193,16 +195,16 @@ function loadCharacter(char: CharacterConfig) {
   outfit.clear();
 
   // Надеваем всё, что помечено как дефолтное для этого персонажа
-char.items.forEach(item => {
-  if (item.isDefault) {
-    outfit.toggleItem(item);
+const defaultPreset = char.presets?.find(p => p.id === char.defaultPresetId) || char.presets?.[0];
+  if (defaultPreset) {
+    outfit.applyPreset(defaultPreset, char.items);
   }
-});
 
   const bodyImg = document.getElementById('body-layer') as HTMLImageElement;
   if (bodyImg) bodyImg.src = char.bodySrc;
 
   // Обновляем визуальное состояние кнопок и сцены
+  renderPresetsUI(char);
   updateMainTabsUI();
   renderStage(currentCharacter, outfit.getEquippedItems());
   renderSubtabs(currentTab);
@@ -226,6 +228,47 @@ function renderCharacterSelection() {
     charList.appendChild(btn);
   });
 }
+
+// Пресеты-пресеты
+function renderPresetsUI(char: CharacterConfig) {
+  if (!presetMenu || !presetBtn) return;
+  presetMenu.innerHTML = '';
+
+  if (!char.presets || char.presets.length === 0) {
+    presetBtn.style.display = 'none';
+    return;
+  }
+
+  presetBtn.style.display = 'block';
+
+  char.presets.forEach(preset => {
+    const itemBtn = document.createElement('button');
+    itemBtn.className = 'preset-menu-item';
+    itemBtn.innerText = preset.name;
+
+    itemBtn.addEventListener('click', () => {
+      outfit.applyPreset(preset, currentCharacter.items);
+      renderStage(currentCharacter, outfit.getEquippedItems());
+      renderGrid();
+      presetMenu.classList.add('hidden'); // Закрываем меню после выбора
+    });
+
+    presetMenu.appendChild(itemBtn);
+  });
+}
+
+// Открытие / закрытие выпадающего меню по клику на кнопку
+presetBtn.addEventListener('click', (e) => {
+  e.stopPropagation();
+  presetMenu.classList.toggle('hidden');
+});
+
+// Закрываем выпадашку при клике в любое другое место экрана
+document.addEventListener('click', (e) => {
+  if (!presetMenu.contains(e.target as Node) && e.target !== presetBtn) {
+    presetMenu.classList.add('hidden');
+  }
+});
 
 charBtn.addEventListener('click', () => charModal.classList.remove('hidden'));
 charModal.addEventListener('click', e => {
