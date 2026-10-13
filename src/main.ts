@@ -6,7 +6,11 @@ import { renderStage } from './engine/renderer';
 import { downloadOutfit } from './engine/exporter';
 import vkBridge from '@vkontakte/vk-bridge';
 
-vkBridge.send('VKWebAppInit');
+if (vkBridge.isWebView()) {
+  vkBridge.send('VKWebAppInit').catch((err) => {
+    console.warn('VK Bridge init failed:', err);
+  });
+}
 // Инициализация менеджера состояния
 const outfit = new OutfitManager();
 

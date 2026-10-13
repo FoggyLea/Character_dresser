@@ -84,8 +84,8 @@ export async function downloadOutfit(character: CharacterConfig, equippedItems: 
         filename: `${character.name}_outfit.png`
       });
       return;
-    } catch(e) {
-      // Запасной вариант — открыть картинку в новом окне, откуда её можно зажать и сохранить
+    } catch (e) {
+      console.warn('VK Download failed, falling back to window.open', e);
       window.open(dataUrl, '_blank');
       return;
     }
