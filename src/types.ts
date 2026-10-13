@@ -43,6 +43,7 @@ export interface Item {
     isRemovable?: boolean;
     isDefault?: boolean;
     variants?: Record<string, string | null>;
+    isCustomColor?: boolean;
 }
 
 export interface Preset {

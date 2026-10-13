@@ -119,7 +119,7 @@ function renderNestedSubtabs(subcat: SubCategoryConfig) {
 function renderGrid() {
   grid.innerHTML = '';
 
- const filteredItems = currentCharacter.items.filter(item => {
+  const filteredItems = currentCharacter.items.filter(item => {
     const matchCategory = item.tab === currentTab && item.subcategory === currentSubcategory;
     if (!matchCategory) return false;
 
@@ -136,26 +136,62 @@ function renderGrid() {
 
     card.className = `item-card ${isEquipped ? 'active' : ''}`;
 
-    // 1. Иконка (если есть)
-    if (item.icon) {
+    // 1. ПРЕВЬЮ (Кастомный инпут цвета / Иконка / Цветная плашка)
+    if (item.isCustomColor) {
+      // Обёртка-плашка под кастомный цвет
+      const pickerWrapper = document.createElement('div');
+      pickerWrapper.className = 'color-preview custom-picker-wrapper';
+      pickerWrapper.style.backgroundColor = item.src;
+
+      // Скрытый нативный инпут выбора цвета
+      const colorInput = document.createElement('input');
+      colorInput.type = 'color';
+      colorInput.value = item.src.startsWith('#') ? item.src : '#ffffff';
+      colorInput.className = 'custom-color-input';
+
+      // Реакция на выбор цвета в палитре
+      colorInput.addEventListener('input', (e) => {
+        const newColor = (e.target as HTMLInputElement).value;
+        item.src = newColor;
+        pickerWrapper.style.backgroundColor = newColor;
+
+        // Если цвет ещё не надета/не выбран, надеваем его
+        if (!outfit.isEquipped(item.id)) {
+          outfit.toggleItem(item);
+        }
+
+        renderStage(currentCharacter, outfit.getEquippedItems());
+      });
+
+      pickerWrapper.appendChild(colorInput);
+      card.appendChild(pickerWrapper);
+
+    } else if (item.icon) {
+      // Обычная иконка предмета
       const img = document.createElement('img');
       img.src = item.icon;
       img.alt = item.name;
       card.appendChild(img);
+
     } else if (item.src.startsWith('#')) {
+      // Готовые фикс-цвета фона (твоя текущая логика)
       const colorBox = document.createElement('div');
       colorBox.className = 'color-preview';
       colorBox.style.backgroundColor = item.src;
       card.appendChild(colorBox);
     }
 
-    // 2. Подпись (ровно одна штука снизу)
+    // 2. Подпись
     const label = document.createElement('span');
     label.className = 'item-label';
     label.innerText = item.name;
     card.appendChild(label);
 
-    card.addEventListener('click', () => {
+    // 3. Клики по карточке
+    card.addEventListener('click', (e) => {
+      // Если кликнули по инпуту цвета, игнорируем toggle, так как 'input' событие всё сделает само
+      if ((e.target as HTMLElement).tagName === 'INPUT') return;
+
       outfit.toggleItem(item);
       renderStage(currentCharacter, outfit.getEquippedItems());
       renderGrid();

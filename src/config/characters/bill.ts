@@ -188,32 +188,6 @@ export const BillWeasley: CharacterConfig = {
             isDefault: true
         },
         {
-            id: 'sweater',
-            name: 'Molly`s sweater',
-            tab: 'clothes',
-            subcategory: 'top',
-            slot: 'top_outer',
-            src: 'assets/characters/bill/clothes/tops/sweater.PNG',
-            icon: 'assets/characters/bill/icons/sweater.png',
-            variants: {
-                white_shirt: 'assets/characters/bill/clothes/tops/sweater_shirt.PNG',
-                black_shirt: 'assets/characters/bill/clothes/tops/sweater_black_shirt.PNG'
-            },
-            defaultZIndex: 70,
-            isRemovable: true
-        },
-        {
-            id: 'school_vest',
-            name: 'School vest',
-            tab: 'clothes',
-            subcategory: 'top',
-            slot: 'top_outer',
-            src: 'assets/characters/bill/clothes/tops/school_vest.PNG',
-            icon: 'assets/characters/bill/icons/school_vest.png',
-            defaultZIndex: 70,
-            isRemovable: true
-        },
-        {
             id: 'white_shirt',
             name: 'White shirt',
             tab: 'clothes',
@@ -258,6 +232,32 @@ export const BillWeasley: CharacterConfig = {
                 school_vest: 'assets/characters/bill/clothes/tops/tshirt_jacket.PNG',
                 sweater: null
             }
+        },
+        {
+            id: 'sweater',
+            name: 'Molly`s sweater',
+            tab: 'clothes',
+            subcategory: 'top',
+            slot: 'top_outer',
+            src: 'assets/characters/bill/clothes/tops/sweater.PNG',
+            icon: 'assets/characters/bill/icons/sweater.png',
+            variants: {
+                white_shirt: 'assets/characters/bill/clothes/tops/sweater_shirt.PNG',
+                black_shirt: 'assets/characters/bill/clothes/tops/sweater_black_shirt.PNG'
+            },
+            defaultZIndex: 70,
+            isRemovable: true
+        },
+        {
+            id: 'school_vest',
+            name: 'School vest',
+            tab: 'clothes',
+            subcategory: 'top',
+            slot: 'top_outer',
+            src: 'assets/characters/bill/clothes/tops/school_vest.PNG',
+            icon: 'assets/characters/bill/icons/school_vest.png',
+            defaultZIndex: 70,
+            isRemovable: true
         },
         {
             id: 'earring1',
@@ -319,6 +319,43 @@ export const BillWeasley: CharacterConfig = {
             isRemovable: true
         },
         {
+            id: 'belt',
+            name: 'Belt',
+            tab: 'details',
+            subcategory: 'acc',
+            slot: 'acc',
+            src: 'assets/characters/bill/details/acc/belt.PNG',
+            icon: 'assets/characters/bill/icons/belt.png',
+            variants: {
+                jeans1: 'assets/characters/bill/details/acc/belt_baggy.PNG',
+                jeans2: 'assets/characters/bill/details/acc/belt_skinny.PNG',
+                trousers: 'assets/characters/bill/details/acc/belt_trousers.PNG'
+            },
+            defaultZIndex: 60,
+            isRemovable: true
+        },
+        {
+            id: 'wristband',
+            name: 'Wristband',
+            tab: 'details',
+            subcategory: 'acc',
+            slot: 'acc',
+            src: 'assets/characters/bill/details/acc/wristband.PNG',
+            icon: 'assets/characters/bill/icons/wristband.png',
+            defaultZIndex: 40,
+            isRemovable: true
+        },
+        {
+            id: 'bracelets',
+            name: 'Bracelets',
+            tab: 'details',
+            subcategory: 'acc',
+            slot: 'acc',
+            src: 'assets/characters/bill/details/acc/bracelets.PNG',
+            icon: 'assets/characters/bill/icons/bracelets.png',
+            defaultZIndex: 40
+        },
+        {
             id: 'nails1',
             name: 'Black nails',
             tab: 'details',
@@ -352,6 +389,15 @@ export const BillWeasley: CharacterConfig = {
             defaultZIndex: 11,
             isRemovable: true,
             isDefault: true
+        },
+        {
+            id: 'bg_default',
+            name: 'Non-transparent',
+            tab: 'background',
+            subcategory: 'bg_colour',
+            slot: 'bg',
+            src: '#3a3a40',
+            defaultZIndex: 1
         },
         {
             id: 'bg_sage',
@@ -406,14 +452,24 @@ export const BillWeasley: CharacterConfig = {
             slot: 'bg',
             src: '#DCA1A1',
             defaultZIndex: 1
-        }
+        },
+        {
+            id: 'bg_custom',
+            name: 'Custom',
+            tab: 'background',
+            subcategory: 'bg_colour',
+            slot: 'bg',
+            src: '#ffffff', // Начальный цвет по умолчанию
+            defaultZIndex: 1,
+            isCustomColor: true // Флаг для определения в UI
+}
     ],
     // PRESETS
     presets: [
         {
             id: 'default',
             name: 'Casual look',
-            itemIds: ['ponytail', 'jeans1', 'red_top', 'vest', 'boots', 'scars', 'bags', 'earring1', 'earring3']
+            itemIds: ['ponytail', 'jeans1', 'belt', 'wristband', 'red_top', 'vest', 'boots', 'scars', 'bags', 'earring1', 'earring3']
         },
         {
             id: 'school',

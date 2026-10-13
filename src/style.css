@@ -1,7 +1,7 @@
 :root {
   --canvas-ratio: 1400 / 1950;
   --bg-color: #1a1a1d;
-  --panel-bg: #2d2d32;
+  --panel-bg: #2d322d;
   --accent: #6c5ce7;
 }
 
@@ -424,4 +424,23 @@ body {
 .preset-menu-item:hover {
   background: var(--accent);
   color: #fff;
+}
+
+/* Кастомный цвет*/
+.custom-picker-wrapper {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  /* Градиентный фон-подсказка, если цвет еще не выбран */
+  background: linear-gradient(135deg, #ff0000, #00ff00, #0000ff);
+}
+
+.custom-color-input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0; /* Скрываем стандартную рамку браузера */
+  cursor: pointer;
 }
