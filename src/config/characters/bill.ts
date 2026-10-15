@@ -212,7 +212,7 @@ export const BillWeasley: CharacterConfig = {
                 jacket: {src:'assets/characters/bill/clothes/tops/shirt_jacket.PNG'},
                 robe: {src:'assets/characters/bill/clothes/tops/shirt_jacket.PNG'},
                 sweater: {src:'assets/characters/bill/clothes/tops/shirt_jacket.PNG'},
-                leather_vest: {src:'assets/characters/bill/clothes/tops/shirt_jacket.PNG'}
+                leather_vest: {src:'assets/characters/bill/clothes/tops/shirt_dvest.PNG'}
             }
         },
         {
@@ -227,8 +227,7 @@ export const BillWeasley: CharacterConfig = {
             isRemovable: true,
             variants: {
                 jacket: {src:'assets/characters/bill/clothes/tops/black_shirt_jacket.PNG'},
-                sweater: {src:'assets/characters/bill/clothes/tops/black_shirt_jacket.PNG'},
-                leather_vest: {src:'assets/characters/bill/clothes/tops/black_shirt_jacket.PNG'}
+                sweater: {src:'assets/characters/bill/clothes/tops/black_shirt_jacket.PNG'}
             }
         },
         { 
