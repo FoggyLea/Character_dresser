@@ -77,7 +77,7 @@ export const SUB_CATEGORIES_MAP: Record<TabCategory, SubCategoryConfig[]> = {
                 { id: 'all', label: 'All' },
                 { id: 'top_inner', label: 'Undertops', slotFilter: 'top_inner' },
                 { id: 'top_mid', label: 'Tops', slotFilter: 'top_mid' },
-                {id: 'top_outer', label: 'Over Tops', slotFilter: 'top_outer'}
+                {id: 'top_outer', label: 'Overtops', slotFilter: 'top_outer'}
             ]
         },
         { id: 'bottom', label: 'Bottom' },

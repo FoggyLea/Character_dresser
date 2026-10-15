@@ -172,6 +172,16 @@ export const BillWeasley: CharacterConfig = {
             isRemovable: true
         },
         {
+            id: 'rollneck',
+            name: 'Roll-neck',
+            tab: 'clothes',
+            subcategory: 'top',
+            slot: 'top_inner',
+            src: 'assets/characters/bill/clothes/tops/rollneck.PNG',
+            icon: 'assets/characters/bill/icons/rollneck.png',
+            defaultZIndex: 25
+        },
+        {
             id: 'red_top',
             name: 'Red top',
             tab: 'clothes',
@@ -181,7 +191,8 @@ export const BillWeasley: CharacterConfig = {
             icon: 'assets/characters/bill/icons/red_top.png',
             variants: {
                 school_vest: {src:'assets/characters/bill/clothes/tops/red_top_sweater.PNG'},
-                sweater: {src:'assets/characters/bill/clothes/tops/red_top_sweater.PNG'}
+                sweater: {src:'assets/characters/bill/clothes/tops/red_top_sweater.PNG'},
+                leather_vest: {src:'assets/characters/bill/clothes/tops/red_top_sweater.PNG'}
             },
             defaultZIndex: 65,
             isRemovable: true,
@@ -200,7 +211,8 @@ export const BillWeasley: CharacterConfig = {
             variants: {
                 jacket: {src:'assets/characters/bill/clothes/tops/shirt_jacket.PNG'},
                 robe: {src:'assets/characters/bill/clothes/tops/shirt_jacket.PNG'},
-                sweater: {src:'assets/characters/bill/clothes/tops/shirt_jacket.PNG'}
+                sweater: {src:'assets/characters/bill/clothes/tops/shirt_jacket.PNG'},
+                leather_vest: {src:'assets/characters/bill/clothes/tops/shirt_jacket.PNG'}
             }
         },
         {
@@ -215,10 +227,12 @@ export const BillWeasley: CharacterConfig = {
             isRemovable: true,
             variants: {
                 jacket: {src:'assets/characters/bill/clothes/tops/black_shirt_jacket.PNG'},
-                sweater: {src:'assets/characters/bill/clothes/tops/black_shirt_jacket.PNG'}
+                sweater: {src:'assets/characters/bill/clothes/tops/black_shirt_jacket.PNG'},
+                leather_vest: {src:'assets/characters/bill/clothes/tops/black_shirt_jacket.PNG'}
             }
         },
-        { id: 't_shirt',
+        { 
+            id: 't_shirt',
             name: 'T-shirt',
             tab: 'clothes',
             subcategory: 'top',
@@ -230,6 +244,20 @@ export const BillWeasley: CharacterConfig = {
             variants: {
                 jacket: {src:'assets/characters/bill/clothes/tops/tshirt_jacket.PNG'},
                 school_vest: {src:'assets/characters/bill/clothes/tops/tshirt_jacket.PNG'},
+                leather_vest: {src:'assets/characters/bill/clothes/tops/tshirt_jacket.PNG'},
+                sweater: {src: null}
+            }
+        },
+        {
+            id: 'ripped_tee',
+            name: 'Ripped tee',
+            tab: 'clothes',
+            subcategory: 'top',
+            slot: 'top_mid',
+            src: 'assets/characters/bill/clothes/tops/ripped_tee.PNG',
+            icon: 'assets/characters/bill/icons/ripped_tee.png',
+            defaultZIndex: 65,
+            variants: {
                 sweater: {src: null}
             }
         },
@@ -258,6 +286,16 @@ export const BillWeasley: CharacterConfig = {
             icon: 'assets/characters/bill/icons/school_vest.png',
             defaultZIndex: 70,
             isRemovable: true
+        },
+        {
+            id: 'leather_vest',
+            name: 'Leather vest',
+            tab: 'clothes',
+            subcategory: 'top',
+            slot: 'top_outer',
+            src: 'assets/characters/bill/clothes/tops/dagonhide_vest.PNG',
+            icon: 'assets/characters/bill/icons/dragonhide_vest.png',
+            defaultZIndex: 70
         },
         {
             id: 'earring1',
