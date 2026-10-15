@@ -255,7 +255,7 @@ export const BillWeasley: CharacterConfig = {
             slot: 'top_mid',
             src: 'assets/characters/bill/clothes/tops/ripped_tee.PNG',
             icon: 'assets/characters/bill/icons/ripped_tee.png',
-            defaultZIndex: 65,
+            defaultZIndex: 39,
             variants: {
                 sweater: {src: null}
             }
